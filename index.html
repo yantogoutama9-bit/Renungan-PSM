@@ -221,11 +221,11 @@
     const activity = session === 'pagi' ? 'memulai hari' : session === 'siang' ? 'meneruskan pekerjaan' : 'mengakhiri hari';
     
     const devotion = {
-        intro: `${timeContext} ini kita akan merenungkan ${book.theme} dari kitab ${book.name}. Saat kita ${activity}, firman Tuhan mengingatkan kita tentang kebenaran ini.`,
-        body: `Dalam ${book.name} ${chapter}:${verse}, kita melihat bagaimana ${book.theme.toLowerCase()} diwujudkan dalam kehidupan orang percaya. Biarlah ayat ini menjadi pengingat bagi kita untuk selalu mengandalkan Tuhan dalam setiap situasi.`,
-        reflection: `Bagaimana ${book.theme.toLowerCase()} dapat Anda terapkan dalam hidup Anda ${session === 'pagi' ? 'hari ini' : session === 'siang' ? 'di tengah kesibukan' : 'sebelum tidur'}?`,
-        prayer: `Bapa di sorga, terima kasih untuk firman-Mu dari ${book.name} yang mengajarkan kami tentang ${book.theme.toLowerCase()}. Ajar kami untuk menghidupinya dalam setiap langkah kami. Dalam nama Yesus, kami berdoa. Amin.`
-    };
+    intro: `${timeContext} ini kita akan merenungkan tema "${book.theme}" dari kitab ${book.name}. Saat kita ${activity}, firman Tuhan menuntun langkah kita.`,
+    body: `Kitab ${book.name} kaya akan pengajaran tentang ${book.theme.toLowerCase()}. Mari kita renungkan ayat ${chapter}:${verse} dan biarkan Roh Kudus berbicara melalui firman-Nya. Bacalah ayat tersebut dengan sungguh-sungguh dalam Alkitab Anda, carilah hikmat yang dapat menjadi pedoman hidup Anda ${session === 'pagi' ? 'sepanjang hari ini' : session === 'siang' ? 'di tengah aktivitas Anda' : 'sebelum Anda beristirahat'}.`,
+    reflection: `Setelah membaca ${book.name} ${chapter}:${verse}, renungkan: Apakah ada pesan khusus yang Tuhan sampaikan untuk kehidupan Anda saat ini?`,
+    prayer: `Bapa di sorga, terbukalah hati kami untuk menerima firman-Mu dari ${book.name}. Ajar kami memahami dan menghidupi kebenaran-Mu dalam setiap langkah. Dalam nama Yesus, kami berdoa. Amin.`
+};
     
     return {
         ref: `${book.name} ${chapter}:${verse}`,
