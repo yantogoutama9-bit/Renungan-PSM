@@ -40,6 +40,17 @@
         .fade-in { animation: fadeIn 0.5s ease-in; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         @media (max-width: 768px) { h1 { font-size: 2em; } .content-card { padding: 25px; } .tabs { gap: 10px; } .tab { padding: 12px 20px; font-size: 0.85em; } }
+        .bible-link {
+    color: var(--dark-gold);
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 1px dashed var(--primary-gold);
+    transition: all 0.3s ease;
+}
+.bible-link:hover {
+    color: var(--primary-gold);
+    border-bottom: 1px solid var(--primary-gold);
+}
     </style>
 </head>
 <body>
@@ -64,7 +75,7 @@
                 </div>
                 <div class="scripture-box">
                     <span class="scripture-ref" id="pagi-ref"></span>
-                    <div class="scripture-note">Bacalah ayat ini di Alkitab Anda</div>
+                    <div class="scripture-note"><a href="#" class="bible-link" data-session="pagi">Bacalah ayat ini di sini</a></div>
                 </div>
                 <div class="devotion-content" id="pagi-devotion"></div>
                 <div class="reflection-question"><h4>💭 Renungkan:</h4><p id="pagi-question"></p></div>
@@ -78,7 +89,7 @@
                 </div>
                 <div class="scripture-box">
                     <span class="scripture-ref" id="siang-ref"></span>
-                    <div class="scripture-note">Bacalah ayat ini di Alkitab Anda</div>
+                    <div class="scripture-note"><a href="#" class="bible-link" data-session="siang">Bacalah ayat ini di sini</a></div>
                 </div>
                 <div class="devotion-content" id="siang-devotion"></div>
                 <div class="reflection-question"><h4>💭 Renungkan:</h4><p id="siang-question"></p></div>
@@ -92,7 +103,7 @@
                 </div>
                 <div class="scripture-box">
                     <span class="scripture-ref" id="malam-ref"></span>
-                    <div class="scripture-note">Bacalah ayat ini di Alkitab Anda</div>
+                    <div class="scripture-note"><a href="#" class="bible-link" data-session="malam">Bacalah ayat ini di sini</a></div>
                 </div>
                 <div class="devotion-content" id="malam-devotion"></div>
                 <div class="reflection-question"><h4>💭 Renungkan:</h4><p id="malam-question"></p></div>
@@ -262,6 +273,37 @@
         }
 
         document.addEventListener('DOMContentLoaded', loadContent);
+        // Setup Bible links
+function setupBibleLinks() {
+    document.querySelectorAll('.bible-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const session = this.getAttribute('data-session');
+            const ref = document.getElementById(`${session}-ref`).textContent;
+            
+            // Parse reference (e.g., "Amos 3:14")
+            const parts = ref.split(' ');
+            const book = parts.slice(0, -1).join(' '); // Handle multi-word books
+            const chapterVerse = parts[parts.length - 1];
+            const [chapter, verse] = chapterVerse.split(':');
+            
+            // Create URL for Alkitab.me (LAI Online)
+            // Format: https://alkitab.me/browse/Amos/3/14
+            const encodedBook = encodeURIComponent(book);
+            const url = `https://alkitab.me/browse/${encodedBook}/${chapter}/${verse}`;
+            
+            window.open(url, '_blank');
+        });
+    });
+}
+
+// Panggil di dalam loadContent()
+// Cari baris: document.addEventListener('DOMContentLoaded', loadContent);
+// Ubah menjadi:
+document.addEventListener('DOMContentLoaded', function() {
+    loadContent();
+    setupBibleLinks();
+});
     </script>
 </body>
 </html>
