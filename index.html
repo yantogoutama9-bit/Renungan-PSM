@@ -195,6 +195,18 @@
             return Math.floor(diff / (1000 * 60 * 60 * 24));
         }
 
+        function getSessionData(session, dayOfYear) {
+    // Tambahkan tahun untuk variasi tahunan
+    const year = new Date().getFullYear();
+    const yearOffset = (year - 2026) * 100; // 2026 = offset 0, 2027 = +100, dst
+    
+    // Offset berbeda untuk setiap sesi agar ayat berbeda
+    const offset = session === 'pagi' ? 0 : session === 'siang' ? 1 : 2;
+    
+    // Gabungkan dayOfYear dengan yearOffset agar unik tiap tahun
+    const uniqueDay = dayOfYear + yearOffset;
+    const bookIndex = uniqueDay % bibleBooks.length;
+        
         // Generate data untuk satu sesi (pagi/siang/malam)
         function getSessionData(session, dayOfYear) {
             // Offset berbeda untuk setiap sesi agar ayat berbeda
