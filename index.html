@@ -108,71 +108,73 @@
     </div>
 
     <script>
-        // Database kitab dengan jumlah pasal yang valid
+        // Database kitab dengan tema dan jumlah pasal
         const bibleBooks = [
-            { name: "Kejadian", chapters: 50 }, { name: "Keluaran", chapters: 40 }, { name: "Imamat", chapters: 27 },
-            { name: "Bilangan", chapters: 36 }, { name: "Ulangan", chapters: 34 }, { name: "Yosua", chapters: 24 },
-            { name: "Hakim-hakim", chapters: 21 }, { name: "Rut", chapters: 4 }, { name: "1 Samuel", chapters: 31 },
-            { name: "2 Samuel", chapters: 24 }, { name: "1 Raja-raja", chapters: 22 }, { name: "2 Raja-raja", chapters: 25 },
-            { name: "1 Tawarikh", chapters: 29 }, { name: "2 Tawarikh", chapters: 36 }, { name: "Ezra", chapters: 10 },
-            { name: "Nehemia", chapters: 13 }, { name: "Ester", chapters: 10 }, { name: "Ayub", chapters: 42 },
-            { name: "Mazmur", chapters: 150 }, { name: "Amsal", chapters: 31 }, { name: "Pengkhotbah", chapters: 12 },
-            { name: "Kidung Agung", chapters: 8 }, { name: "Yesaya", chapters: 66 }, { name: "Yeremia", chapters: 52 },
-            { name: "Ratapan", chapters: 5 }, { name: "Yehezkiel", chapters: 48 }, { name: "Daniel", chapters: 12 },
-            { name: "Hosea", chapters: 14 }, { name: "Yoel", chapters: 3 }, { name: "Amos", chapters: 9 },
-            { name: "Obaja", chapters: 1 }, { name: "Yunus", chapters: 4 }, { name: "Mikha", chapters: 7 },
-            { name: "Nahum", chapters: 3 }, { name: "Habakuk", chapters: 3 }, { name: "Zefanya", chapters: 3 },
-            { name: "Hagai", chapters: 2 }, { name: "Zakharia", chapters: 14 }, { name: "Maleakhi", chapters: 4 },
-            { name: "Matius", chapters: 28 }, { name: "Markus", chapters: 16 }, { name: "Lukas", chapters: 24 },
-            { name: "Yohanes", chapters: 21 }, { name: "Kisah Para Rasul", chapters: 28 }, { name: "Roma", chapters: 16 },
-            { name: "1 Korintus", chapters: 16 }, { name: "2 Korintus", chapters: 13 }, { name: "Galatia", chapters: 6 },
-            { name: "Efesus", chapters: 6 }, { name: "Filipi", chapters: 4 }, { name: "Kolose", chapters: 4 },
-            { name: "1 Tesalonika", chapters: 5 }, { name: "2 Tesalonika", chapters: 3 }, { name: "1 Timotius", chapters: 6 },
-            { name: "2 Timotius", chapters: 4 }, { name: "Titus", chapters: 3 }, { name: "Filemon", chapters: 1 },
-            { name: "Ibrani", chapters: 13 }, { name: "Yakobus", chapters: 5 }, { name: "1 Petrus", chapters: 5 },
-            { name: "2 Petrus", chapters: 3 }, { name: "1 Yohanes", chapters: 5 }, { name: "2 Yohanes", chapters: 1 },
-            { name: "3 Yohanes", chapters: 1 }, { name: "Yudas", chapters: 1 }, { name: "Wahyu", chapters: 22 }
+            { name: "Mazmur", chapters: 150, theme: "Pujian dan Doa" },
+            { name: "Amsal", chapters: 31, theme: "Hikmat dan Kebijaksanaan" },
+            { name: "Yesaya", chapters: 66, theme: "Pengharapan dan Keselamatan" },
+            { name: "Yeremia", chapters: 52, theme: "Pemulihan dan Pengampunan" },
+            { name: "Ratapan", chapters: 5, theme: "Kesedihan dan Penghiburan" },
+            { name: "Yehezkiel", chapters: 48, theme: "Kebangkitan dan Pembaruan" },
+            { name: "Daniel", chapters: 12, theme: "Kesetiaan dan Kemenangan" },
+            { name: "Hosea", chapters: 14, theme: "Kasih Setia Allah" },
+            { name: "Yoel", chapters: 3, theme: "Pertobatan dan Pemulihan" },
+            { name: "Amos", chapters: 9, theme: "Keadilan dan Kebenaran" },
+            { name: "Obaja", chapters: 1, theme: "Kebangkitan Israel" },
+            { name: "Yunus", chapters: 4, theme: "Kasih Karunia bagi Semua" },
+            { name: "Mikha", chapters: 7, theme: "Keadilan dan Kemurahan" },
+            { name: "Nahum", chapters: 3, theme: "Penghakiman dan Pembebasan" },
+            { name: "Habakuk", chapters: 3, theme: "Iman di Tengah Kekacauan" },
+            { name: "Zefanya", chapters: 3, theme: "Sukacita dalam Keselamatan" },
+            { name: "Hagai", chapters: 2, theme: "Prioritas dan Pengabdian" },
+            { name: "Zakharia", chapters: 14, theme: "Kedatangan dan Kemuliaan" },
+            { name: "Maleakhi", chapters: 4, theme: "Kesetiaan dalam Perjanjian" },
+            { name: "Matius", chapters: 28, theme: "Kerajaan Surga" },
+            { name: "Markus", chapters: 16, theme: "Pelayanan dan Pengorbanan" },
+            { name: "Lukas", chapters: 24, theme: "Kasih Karunia bagi Semua" },
+            { name: "Yohanes", chapters: 21, theme: "Kehidupan Kekal" },
+            { name: "Kisah Para Rasul", chapters: 28, theme: "Pemberitaan Injil" },
+            { name: "Roma", chapters: 16, theme: "Pembenaran oleh Iman" },
+            { name: "1 Korintus", chapters: 16, theme: "Kesatuan dan Kasih" },
+            { name: "2 Korintus", chapters: 13, theme: "Penghiburan dan Pemulihan" },
+            { name: "Galatia", chapters: 6, theme: "Kemerdekaan di Kristus" },
+            { name: "Efesus", chapters: 6, theme: "Pertumbuhan dan Perlengkapan" },
+            { name: "Filipi", chapters: 4, theme: "Sukacita dan Kecukupan" },
+            { name: "Kolose", chapters: 4, theme: "Kemuliaan Kristus" },
+            { name: "1 Tesalonika", chapters: 5, theme: "Kedatangan Kedua" },
+            { name: "2 Tesalonika", chapters: 3, theme: "Kesabaran dan Kerja" },
+            { name: "1 Timotius", chapters: 6, theme: "Pengajaran dan Disiplin" },
+            { name: "2 Timotius", chapters: 4, theme: "Kesetiaan dan Penderitaan" },
+            { name: "Titus", chapters: 3, theme: "Pengajaran yang Sehat" },
+            { name: "Filemon", chapters: 1, theme: "Pengampunan dan Reconciliation" },
+            { name: "Ibrani", chapters: 13, theme: "Iman yang Teguh" },
+            { name: "Yakobus", chapters: 5, theme: "Iman dan Perbuatan" },
+            { name: "1 Petrus", chapters: 5, theme: "Pengharapan dalam Penderitaan" },
+            { name: "2 Petrus", chapters: 3, theme: "Pertumbuhan dalam Kasih" },
+            { name: "1 Yohanes", chapters: 5, theme: "Kasih dan Kepastian" },
+            { name: "2 Yohanes", chapters: 1, theme: "Kasih dalam Kebenaran" },
+            { name: "3 Yohanes", chapters: 1, theme: "Kesucian dan Kerendahan Hati" },
+            { name: "Yudas", chapters: 1, theme: "Iman yang Diperjuangkan" },
+            { name: "Wahyu", chapters: 22, theme: "Kemenangan dan Kekekalan" },
+            { name: "Kejadian", chapters: 50, theme: "Penciptaan dan Pemeliharaan" },
+            { name: "Keluaran", chapters: 40, theme: "Pembebasan dan Keselamatan" },
+            { name: "Imamat", chapters: 27, theme: "Kekudusan dan Pengudusan" },
+            { name: "Bilangan", chapters: 36, theme: "Kesetiaan dan Perjalanan" },
+            { name: "Ulangan", chapters: 34, theme: "Peringatan dan Perjanjian" },
+            { name: "Yosua", chapters: 24, theme: "Kemenangan dan Ketaatan" },
+            { name: "Hakim-hakim", chapters: 21, theme: "Pembebasan dan Kejatohan" },
+            { name: "Rut", chapters: 4, theme: "Kasih Setia dan Pemeliharaan" },
+            { name: "1 Samuel", chapters: 31, theme: "Kerajaan dan Kepemimpinan" },
+            { name: "2 Samuel", chapters: 24, theme: "Kerajaan dan Penebusan" },
+            { name: "1 Raja-raja", chapters: 22, theme: "Kebijaksanaan dan Kegagalan" },
+            { name: "2 Raja-raja", chapters: 25, theme: "Kesetiaan dan Kehancuran" },
+            { name: "1 Tawarikh", chapters: 29, theme: "Sejarah dan Pewarisan" },
+            { name: "2 Tawarikh", chapters: 36, theme: "Kebangunan dan Pemulihan" },
+            { name: "Ezra", chapters: 10, theme: "Pemulihan dan Pembangunan" },
+            { name: "Nehemia", chapters: 13, theme: "Kesatuan dan Pengabdian" },
+            { name: "Ester", chapters: 10, theme: "Pemeliharaan Ilahi" },
+            { name: "Ayub", chapters: 42, theme: "Penderitaan dan Pemulihan" }
         ];
-
-        // Subjek dan konteks untuk tema
-        const subjects = ["Kasih", "Kasih Karunia", "Kemurahan", "Kebaikan", "Kesetiaan", "Kebenaran", "Keadilan", "Kedamaian", "Sukacita", "Pengharapan", "Iman", "Kekuatan", "Kemenangan", "Kemuliaan", "Kekudusan", "Kebijaksanaan", "Pengertian", "Pengetahuan", "Kerendahan Hati", "Kesabaran", "Ketahanan", "Kegigihan", "Ketulusan", "Kejujuran", "Keberanian", "Keteguhan", "Kekuatan Batin", "Kedalaman", "Ketinggian", "Keluwesan", "Kecukupan", "Kekayaan", "Kemakmuran", "Kesehatan", "Kesembuhan", "Pemulihan", "Pengampunan", "Penebusan", "Pembenaran", "Pengudusan", "Pemeliharaan", "Perlindungan", "Pertolongan", "Penyertaan", "Pimpinan", "Bimbingan", "Terang", "Kejernihan", "Kepastian", "Keamanan", "Ketenangan", "Kelembutan", "Kemurahan Hati", "Belas Kasihan", "Empati", "Penerimaan", "Pengangkatan", "Penghiburan", "Penyegaran", "Kebahagiaan", "Kepuasan", "Kelimpahan", "Berlimpah-limpah", "Berkat", "Anugerah", "Pemberian", "Karunia", "Kemampuan", "Potensi", "Mujizat", "Tanda", "Kuasa", "Keagungan", "Kebesaran", "Kehormatan", "Kewibawaan", "Kedaulatan", "Kerajaan", "Pemerintahan", "Ketetapan", "Rencana", "Tujuan", "Maksud", "Panggilan", "Pilihan", "Kesanggupan", "Kesediaan", "Ketaatan", "Pengabdian", "Pelayanan", "Persembahan", "Korban", "Pengorbanan", "Cinta", "Sayang", "Kasih Sayang", "Persahabatan", "Persekutuan", "Persatuan", "Kesatuan", "Kesepakatan", "Perdamaian", "Rekonsiliasi", "Pemulihan Hubungan", "Pertobatan", "Pergantian", "Pembaruan", "Pembaharuan", "Pertumbuhan", "Kematangan", "Kesempurnaan", "Keutuhan", "Keselamatan", "Keselamatan Jiwa", "Kekekalan", "Keabadian", "Surga", "Kerajaan Surga", "Kehidupan", "Kehidupan Kekal", "Kehidupan Baru", "Kehidupan yang Berkelimpahan", "Kehidupan yang Berbuah", "Kehidupan yang Bermakna", "Kehidupan yang Bertujuan", "Kehidupan yang Diberkati", "Kehidupan yang Dikuduskan", "Kehidupan yang Dipenuhi Roh", "Kehidupan yang Disenangi Tuhan", "Kehidupan yang Berkenan", "Kehidupan yang Saleh", "Kehidupan yang Benar", "Kehidupan yang Adil", "Kehidupan yang Damai", "Kehidupan yang Sukacita", "Kehidupan yang Pengharapan", "Kehidupan yang Iman", "Kehidupan yang Cinta", "Kehidupan yang Kasih", "Kehidupan yang Melayani", "Kehidupan yang Mengasihi", "Kehidupan yang Mengampuni", "Kehidupan yang Menerima", "Kehidupan yang Memberi", "Kehidupan yang Berbagi", "Kehidupan yang Peduli", "Kehidupan yang Memperhatikan", "Kehidupan yang Mengasihi Sesama", "Kehidupan yang Mengasihi Tuhan", "Kehidupan yang Mengasihi Keluarga", "Kehidupan yang Mengasihi Saudara", "Kehidupan yang Mengasihi Musuh", "Kehidupan yang Mengasihi Orang Lain", "Kehidupan yang Mengasihi Diri Sendiri", "Kehidupan yang Seimbang", "Kehidupan yang Harmonis", "Kehidupan yang Teratur", "Kehidupan yang Disiplin", "Kehidupan yang Rajin", "Kehidupan yang Tekun", "Kehidupan yang Gigih", "Kehidupan yang Ulet", "Kehidupan yang Tabah", "Kehidupan yang Kuat", "Kehidupan yang Tangguh", "Kehidupan yang Teguh", "Kehidupan yang Kokoh", "Kehidupan yang Mantap", "Kehidupan yang Stabil", "Kehidupan yang Aman", "Kehidupan yang Tentram", "Kehidupan yang Tenteram", "Kehidupan yang Nyaman", "Kehidupan yang Senang", "Kehidupan yang Bahagia", "Kehidupan yang Gembira", "Kehidupan yang Bersukacita", "Kehidupan yang Bersorak-sorai", "Kehidupan yang Bersyukur", "Kehidupan yang Berterima Kasih", "Kehidupan yang Mengucap Syukur", "Kehidupan yang Memuliakan Tuhan", "Kehidupan yang Memuji Tuhan", "Kehidupan yang Menyembah Tuhan", "Kehidupan yang Berdoa", "Kehidupan yang Bersekutu", "Kehidupan yang Beribadah", "Kehidupan yang Berpuasa", "Kehidupan yang Berbagi Firman", "Kehidupan yang Memberitakan Injil", "Kehidupan yang Menjadi Saksi", "Kehidupan yang Menjadi Berkat", "Kehidupan yang Menjadi Terang", "Kehidupan yang Menjadi Garam", "Kehidupan yang Menjadi Teladan", "Kehidupan yang Menjadi Contoh", "Kehidupan yang Menjadi Panutan", "Kehidupan yang Menjadi Inspirasi", "Kehidupan yang Menjadi Motivasi", "Kehidupan yang Menjadi Dorongan", "Kehidupan yang Menjadi Kekuatan", "Kehidupan yang Menjadi Pengharapan", "Kehidupan yang Menjadi Penghiburan", "Kehidupan yang Menjadi Penyegaran", "Kehidupan yang Menjadi Pemulihan", "Kehidupan yang Menjadi Kesembuhan", "Kehidupan yang Menjadi Kesehatan", "Kehidupan yang Menjadi Kekayaan", "Kehidupan yang Menjadi Kemakmuran", "Kehidupan yang Menjadi Kecukupan", "Kehidupan yang Menjadi Kelimpahan", "Kehidupan yang Menjadi Berlimpah-limpah", "Kehidupan yang Menjadi Berkah", "Kehidupan yang Menjadi Anugerah", "Kehidupan yang Menjadi Karunia", "Kehidupan yang Menjadi Pemberian", "Kehidupan yang Menjadi Hadiah", "Kehidupan yang Menjadi Bonus", "Kehidupan yang Menjadi Kejutan", "Kehidupan yang Menjadi Mujizat", "Kehidupan yang Menjadi Tanda", "Kehidupan yang Menjadi Kuasa", "Kehidupan yang Menjadi Keagungan", "Kehidupan yang Menjadi Kebesaran", "Kehidupan yang Menjadi Kemuliaan", "Kehidupan yang Menjadi Kehormatan", "Kehidupan yang Menjadi Kewibawaan", "Kehidupan yang Menjadi Kedaulatan", "Kehidupan yang Menjadi Kerajaan", "Kehidupan yang Menjadi Pemerintahan", "Kehidupan yang Menjadi Ketetapan", "Kehidupan yang Menjadi Rencana", "Kehidupan yang Menjadi Tujuan", "Kehidupan yang Menjadi Maksud", "Kehidupan yang Menjadi Panggilan", "Kehidupan yang Menjadi Pilihan", "Kehidupan yang Menjadi Kesanggupan", "Kehidupan yang Menjadi Kesediaan", "Kehidupan yang Menjadi Ketaatan", "Kehidupan yang Menjadi Pengabdian", "Kehidupan yang Menjadi Pelayanan", "Kehidupan yang Menjadi Persembahan", "Kehidupan yang Menjadi Korban", "Kehidupan yang Menjadi Pengorbanan"];
-
-        const contexts = ["di Dalam Kristus", "oleh Roh Kudus", "karena Kasih Karunia", "melalui Iman", "dalam Pengharapan", "dengan Sukacita", "dalam Damai Sejahtera", "dalam Kebenaran", "dalam Keadilan", "dalam Kemuliaan", "dalam Kekudusan", "dalam Kebijaksanaan", "dalam Pengertian", "dalam Pengetahuan", "dalam Kerendahan Hati", "dalam Kesabaran", "dalam Ketahanan", "dalam Kegigihan", "dalam Ketulusan", "dalam Kejujuran", "dalam Keberanian", "dalam Keteguhan", "dalam Kekuatan Batin", "dalam Kedalaman", "dalam Ketinggian", "dalam Keluwesan", "dalam Kecukupan", "dalam Kekayaan", "dalam Kemakmuran", "dalam Kesehatan", "dalam Kesembuhan", "dalam Pemulihan", "dalam Pengampunan", "dalam Penebusan", "dalam Pembenaran", "dalam Pengudusan", "dalam Pemeliharaan", "dalam Perlindungan", "dalam Pertolongan", "dalam Penyertaan", "dalam Pimpinan", "dalam Bimbingan", "dalam Terang", "dalam Kejernihan", "dalam Kepastian", "dalam Keamanan", "dalam Ketenangan", "dalam Kelembutan", "dalam Kemurahan Hati", "dalam Belas Kasihan", "dalam Empati", "dalam Penerimaan", "dalam Pengangkatan", "dalam Penghiburan", "dalam Penyegaran", "dalam Kebahagiaan", "dalam Kepuasan", "dalam Kelimpahan", "dalam Berlimpah-limpah", "dalam Berkat", "dalam Anugerah", "dalam Pemberian", "dalam Karunia", "dalam Kemampuan", "dalam Potensi", "dalam Mujizat", "dalam Tanda", "dalam Kuasa", "dalam Keagungan", "dalam Kebesaran", "dalam Kehormatan", "dalam Kewibawaan", "dalam Kedaulatan", "dalam Kerajaan", "dalam Pemerintahan", "dalam Ketetapan", "dalam Rencana", "dalam Tujuan", "dalam Maksud", "dalam Panggilan", "dalam Pilihan", "dalam Kesanggupan", "dalam Kesediaan", "dalam Ketaatan", "dalam Pengabdian", "dalam Pelayanan", "dalam Persembahan", "dalam Korban", "dalam Pengorbanan", "dalam Cinta", "dalam Sayang", "dalam Kasih Sayang", "dalam Persahabatan", "dalam Persekutuan", "dalam Persatuan", "dalam Kesatuan", "dalam Kesepakatan", "dalam Kedamaian", "dalam Perdamaian", "dalam Rekonsiliasi", "dalam Pemulihan Hubungan", "dalam Pertobatan", "dalam Pergantian", "dalam Pembaruan", "dalam Pembaharuan", "dalam Pertumbuhan", "dalam Kematangan", "dalam Kesempurnaan", "dalam Keutuhan", "dalam Keselamatan", "dalam Keselamatan Jiwa", "dalam Kekekalan", "dalam Keabadian", "dalam Surga", "dalam Kerajaan Surga", "dalam Kehidupan", "dalam Kehidupan Kekal", "dalam Kehidupan Baru", "dalam Kehidupan yang Berkelimpahan", "dalam Kehidupan yang Berbuah", "dalam Kehidupan yang Bermakna", "dalam Kehidupan yang Bertujuan", "dalam Kehidupan yang Diberkati", "dalam Kehidupan yang Dikuduskan", "dalam Kehidupan yang Dipenuhi Roh", "dalam Kehidupan yang Disenangi Tuhan", "dalam Kehidupan yang Berkenan", "dalam Kehidupan yang Saleh", "dalam Kehidupan yang Benar", "dalam Kehidupan yang Adil", "dalam Kehidupan yang Damai", "dalam Kehidupan yang Sukacita", "dalam Kehidupan yang Pengharapan", "dalam Kehidupan yang Iman", "dalam Kehidupan yang Cinta", "dalam Kehidupan yang Kasih", "dalam Kehidupan yang Melayani", "dalam Kehidupan yang Mengasihi", "dalam Kehidupan yang Mengampuni", "dalam Kehidupan yang Menerima", "dalam Kehidupan yang Memberi", "dalam Kehidupan yang Berbagi", "dalam Kehidupan yang Peduli", "dalam Kehidupan yang Memperhatikan", "dalam Kehidupan yang Mengasihi Sesama", "dalam Kehidupan yang Mengasihi Tuhan", "dalam Kehidupan yang Mengasihi Keluarga", "dalam Kehidupan yang Mengasihi Saudara", "dalam Kehidupan yang Mengasihi Musuh", "dalam Kehidupan yang Mengasihi Orang Lain", "dalam Kehidupan yang Mengasihi Diri Sendiri", "dalam Kehidupan yang Seimbang", "dalam Kehidupan yang Harmonis", "dalam Kehidupan yang Teratur", "dalam Kehidupan yang Disiplin", "dalam Kehidupan yang Rajin", "dalam Kehidupan yang Tekun", "dalam Kehidupan yang Gigih", "dalam Kehidupan yang Ulet", "dalam Kehidupan yang Tabah", "dalam Kehidupan yang Kuat", "dalam Kehidupan yang Tangguh", "dalam Kehidupan yang Teguh", "dalam Kehidupan yang Kokoh", "dalam Kehidupan yang Mantap", "dalam Kehidupan yang Stabil", "dalam Kehidupan yang Aman", "dalam Kehidupan yang Tentram", "dalam Kehidupan yang Tenteram", "dalam Kehidupan yang Nyaman", "dalam Kehidupan yang Senang", "dalam Kehidupan yang Bahagia", "dalam Kehidupan yang Gembira", "dalam Kehidupan yang Bersukacita", "dalam Kehidupan yang Bersorak-sorai", "dalam Kehidupan yang Bersyukur", "dalam Kehidupan yang Berterima Kasih", "dalam Kehidupan yang Mengucap Syukur", "dalam Kehidupan yang Memuliakan Tuhan", "dalam Kehidupan yang Memuji Tuhan", "dalam Kehidupan yang Menyembah Tuhan", "dalam Kehidupan yang Berdoa", "dalam Kehidupan yang Bersekutu", "dalam Kehidupan yang Beribadah", "dalam Kehidupan yang Berpuasa", "dalam Kehidupan yang Berbagi Firman", "dalam Kehidupan yang Memberitakan Injil", "dalam Kehidupan yang Menjadi Saksi", "dalam Kehidupan yang Menjadi Berkat", "dalam Kehidupan yang Menjadi Terang", "dalam Kehidupan yang Menjadi Garam", "dalam Kehidupan yang Menjadi Teladan", "dalam Kehidupan yang Menjadi Contoh", "dalam Kehidupan yang Menjadi Panutan", "dalam Kehidupan yang Menjadi Inspirasi", "dalam Kehidupan yang Menjadi Motivasi", "dalam Kehidupan yang Menjadi Dorongan", "dalam Kehidupan yang Menjadi Kekuatan", "dalam Kehidupan yang Menjadi Pengharapan", "dalam Kehidupan yang Menjadi Penghiburan", "dalam Kehidupan yang Menjadi Penyegaran", "dalam Kehidupan yang Menjadi Pemulihan", "dalam Kehidupan yang Menjadi Kesembuhan", "dalam Kehidupan yang Menjadi Kesehatan", "dalam Kehidupan yang Menjadi Kekayaan", "dalam Kehidupan yang Menjadi Kemakmuran", "dalam Kehidupan yang Menjadi Kecukupan", "dalam Kehidupan yang Menjadi Kelimpahan", "dalam Kehidupan yang Menjadi Berlimpah-limpah", "dalam Kehidupan yang Menjadi Berkah", "dalam Kehidupan yang Menjadi Anugerah", "dalam Kehidupan yang Menjadi Karunia", "dalam Kehidupan yang Menjadi Pemberian", "dalam Kehidupan yang Menjadi Hadiah", "dalam Kehidupan yang Menjadi Bonus", "dalam Kehidupan yang Menjadi Kejutan", "dalam Kehidupan yang Menjadi Mujizat", "dalam Kehidupan yang Menjadi Tanda", "dalam Kehidupan yang Menjadi Kuasa", "dalam Kehidupan yang Menjadi Keagungan", "dalam Kehidupan yang Menjadi Kebesaran", "dalam Kehidupan yang Menjadi Kemuliaan", "dalam Kehidupan yang Menjadi Kehormatan", "dalam Kehidupan yang Menjadi Kewibawaan", "dalam Kehidupan yang Menjadi Kedaulatan", "dalam Kehidupan yang Menjadi Kerajaan", "dalam Kehidupan yang Menjadi Pemerintahan", "dalam Kehidupan yang Menjadi Ketetapan", "dalam Kehidupan yang Menjadi Rencana", "dalam Kehidupan yang Menjadi Tujuan", "dalam Kehidupan yang Menjadi Maksud", "dalam Kehidupan yang Menjadi Panggilan", "dalam Kehidupan yang Menjadi Pilihan", "dalam Kehidupan yang Menjadi Kesanggupan", "dalam Kehidupan yang Menjadi Kesediaan", "dalam Kehidupan yang Menjadi Ketaatan", "dalam Kehidupan yang Menjadi Pengabdian", "dalam Kehidupan yang Menjadi Pelayanan", "dalam Kehidupan yang Menjadi Persembahan", "dalam Kehidupan yang Menjadi Korban", "dalam Kehidupan yang Menjadi Pengorbanan"];
-
-        // Generate tema unik berdasarkan hari
-        function getDailyTheme(dayOfYear) {
-            const subjectIndex = dayOfYear % subjects.length;
-            const contextIndex = Math.floor(dayOfYear / subjects.length) % contexts.length;
-            return subjects[subjectIndex] + " " + contexts[contextIndex];
-        }
-
-        // Generate renungan dinamis
-        function getDevotion(session, theme, dayOfYear) {
-            const timeContext = session === 'pagi' ? 'pagi hari' : session === 'siang' ? 'tengah hari' : 'malam hari';
-            const activity = session === 'pagi' ? 'memulai aktivitas' : session === 'siang' ? 'meneruskan pekerjaan' : 'beristirahat';
-            
-            return {
-                intro: `Renungan ${timeContext} ini mengajak kita merenungkan tentang ${theme}. Saat kita ${activity}, firman Tuhan memberikan kita kekuatan dan arahan.`,
-                body: `Dalam kehidupan sehari-hari, seringkali kita menghadapi berbagai tantangan dan pergumulan. Namun, melalui ${theme}, kita diberikan jalan keluar dan pengharapan baru. Biarlah kebenaran ini menemani langkah kita hari ini.`,
-                reflection: `Bagaimana ${theme} dapat menjadi nyata dalam hidup Anda saat ini?`,
-                prayer: `Bapa di sorga, terima kasih untuk ${theme} yang Engkau berikan kepada kami. Ajar kami untuk menghidupinya dalam setiap langkah kami. Dalam nama Yesus, kami berdoa. Amin.`
-            };
-        }
-
-        // Generate referensi ayat yang VALID
-        function getDailyReference(session, dayOfYear) {
-            const offset = session === 'pagi' ? 0 : session === 'siang' ? 20 : 40;
-            const bookIndex = (dayOfYear + offset) % bibleBooks.length;
-            const book = bibleBooks[bookIndex];
-            
-            // Generate chapter yang valid (1 sampai jumlah pasal)
-            const chapter = ((dayOfYear * 3 + offset) % book.chapters) + 1;
-            
-            // Generate verse (1-30, asumsi rata-rata 30 ayat per pasal)
-            const verse = ((dayOfYear * 7 + offset) % 30) + 1;
-            
-            return `${book.name} ${chapter}:${verse}`;
-        }
 
         // Hitung hari ke-berapa dalam tahun
         function getDayOfYear() {
@@ -182,24 +184,56 @@
             return Math.floor(diff / (1000 * 60 * 60 * 24));
         }
 
+        // Generate data untuk satu sesi (pagi/siang/malam)
+        function getSessionData(session, dayOfYear) {
+            // Offset berbeda untuk setiap sesi agar ayat berbeda
+            const offset = session === 'pagi' ? 0 : session === 'siang' ? 1 : 2;
+            const bookIndex = (dayOfYear + offset) % bibleBooks.length;
+            const book = bibleBooks[bookIndex];
+            
+            // Generate chapter yang valid
+            const chapter = ((dayOfYear * 3 + offset * 7) % book.chapters) + 1;
+            
+            // Generate verse (1-30)
+            const verse = ((dayOfYear * 7 + offset * 13) % 30) + 1;
+            
+            // Tema berdasarkan kitab dan hari
+            const dailyTheme = `${book.theme} - Hari ke-${dayOfYear}`;
+            
+            // Renungan yang terhubung dengan tema kitab
+            const timeContext = session === 'pagi' ? 'Pagi' : session === 'siang' ? 'Siang' : 'Malam';
+            const activity = session === 'pagi' ? 'memulai hari' : session === 'siang' ? 'meneruskan pekerjaan' : 'mengakhiri hari';
+            
+            const devotion = {
+                intro: `${timeContext} ini kita akan merenungkan ${book.theme} dari kitab ${book.name}. Saat kita ${activity}, firman Tuhan mengingatkan kita tentang kebenaran ini.`,
+                body: `Dalam ${book.name} ${chapter}:${verse}, kita melihat bagaimana ${book.theme.toLowerCase()} diwujudkan dalam kehidupan orang percaya. Biarlah ayat ini menjadi pengingat bagi kita untuk selalu mengandalkan Tuhan dalam setiap situasi.`,
+                reflection: `Bagaimana ${book.theme.toLowerCase()} dapat Anda terapkan dalam hidup Anda ${session === 'pagi' ? 'hari ini' : session === 'siang' ? 'di tengah kesibukan' : 'sebelum tidur'}?`,
+                prayer: `Bapa di sorga, terima kasih untuk firman-Mu dari ${book.name} yang mengajarkan kami tentang ${book.theme.toLowerCase()}. Ajar kami untuk menghidupinya dalam setiap langkah kami. Dalam nama Yesus, kami berdoa. Amin.`
+            };
+            
+            return {
+                ref: `${book.name} ${chapter}:${verse}`,
+                theme: dailyTheme,
+                devotion: devotion
+            };
+        }
+
         // Load konten
         function loadContent() {
             const dayOfYear = getDayOfYear();
-            const theme = getDailyTheme(dayOfYear);
             
             document.getElementById('currentDate').textContent = new Date().toLocaleDateString('id-ID', { 
                 weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' 
             });
 
             ['pagi', 'siang', 'malam'].forEach(session => {
-                const ref = getDailyReference(session, dayOfYear);
-                const devotion = getDevotion(session, theme, dayOfYear);
+                const data = getSessionData(session, dayOfYear);
                 
-                document.getElementById(`${session}-theme`).textContent = theme;
-                document.getElementById(`${session}-ref`).textContent = ref;
-                document.getElementById(`${session}-devotion`).innerHTML = `<p>${devotion.intro}</p><p>${devotion.body}</p>`;
-                document.getElementById(`${session}-question`).textContent = devotion.reflection;
-                document.getElementById(`${session}-prayer`).textContent = devotion.prayer;
+                document.getElementById(`${session}-theme`).textContent = data.theme;
+                document.getElementById(`${session}-ref`).textContent = data.ref;
+                document.getElementById(`${session}-devotion`).innerHTML = `<p>${data.devotion.intro}</p><p>${data.devotion.body}</p>`;
+                document.getElementById(`${session}-question`).textContent = data.devotion.reflection;
+                document.getElementById(`${session}-prayer`).textContent = data.devotion.prayer;
             });
 
             setActiveTabByTime();
