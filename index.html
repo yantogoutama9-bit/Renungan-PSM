@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Renungan PSM - Pagi Siang Malam</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --primary-gold: #D4AF37; --dark-gold: #B8860B; --light-gold: #F4E8C1; --deep-navy: #1a1a2e; --soft-white: #fafafa; --text-dark: #2c2c2c; --text-light: #666; }
+        body { font-family: 'Montserrat', sans-serif; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); min-height: 100vh; color: var(--text-dark); line-height: 1.6; }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        header { text-align: center; padding: 40px 20px; background: linear-gradient(135deg, var(--deep-navy) 0%, #16213e 100%); color: white; border-radius: 20px; margin-bottom: 30px; }
+        h1 { font-family: 'Cormorant Garamond', serif; font-size: 2.5em; font-weight: 600; margin-bottom: 10px; letter-spacing: 2px; color: var(--primary-gold); }
+        .subtitle { font-size: 0.9em; opacity: 0.9; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px; }
+        .date-display { font-size: 1.1em; font-weight: 300; background: rgba(255,255,255,0.1); padding: 10px 25px; border-radius: 30px; display: inline-block; border: 1px solid rgba(212,175,55,0.3); }
+        .tabs { display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; flex-wrap: wrap; }
+        .tab { background: white; border: none; padding: 15px 30px; border-radius: 50px; cursor: pointer; font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 0.95em; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .tab.active { background: var(--deep-navy); color: var(--primary-gold); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(26,26,46,0.3); }
+        .tab-icon { margin-right: 8px; font-size: 1.2em; }
+        .content-card { background: white; border-radius: 20px; padding: 40px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); margin-bottom: 20px; position: relative; overflow: hidden; min-height: 400px; }
+        .content-card::before { content: ''; position: absolute; top: 0; left: 0; width: 5px; height: 100%; background: linear-gradient(to bottom, var(--primary-gold), var(--dark-gold)); }
+        .session-header { display: flex; align-items: center; margin-bottom: 25px; padding-bottom: 20px; border-bottom: 2px solid var(--light-gold); }
+        .session-icon { font-size: 2.5em; margin-right: 20px; background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .session-title-group h2 { font-family: 'Cormorant Garamond', serif; font-size: 1.8em; color: var(--deep-navy); margin-bottom: 5px; }
+        .theme-badge { display: inline-block; background: var(--light-gold); color: var(--dark-gold); padding: 5px 15px; border-radius: 20px; font-size: 0.85em; font-weight: 600; margin-bottom: 15px; }
+        .scripture-box { background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%); padding: 25px; border-radius: 15px; margin-bottom: 25px; border-left: 4px solid var(--primary-gold); }
+        .scripture-ref { font-family: 'Cormorant Garamond', serif; font-size: 1.5em; font-weight: 600; color: var(--dark-gold); display: block; text-align: center; }
+        .scripture-note { font-size: 0.9em; color: var(--text-light); margin-top: 10px; text-align: center; font-style: italic; }
+        .devotion-content { color: var(--text-dark); line-height: 1.9; font-size: 1.05em; text-align: justify; }
+        .devotion-content p { margin-bottom: 15px; }
+        .reflection-question { background: var(--soft-white); padding: 20px; border-radius: 12px; margin-top: 25px; border: 1px solid #e0e0e0; }
+        .prayer-section { margin-top: 30px; padding: 25px; background: linear-gradient(135deg, var(--deep-navy) 0%, #16213e 100%); color: white; border-radius: 15px; position: relative; overflow: hidden; }
+        .prayer-section::before { content: '"'; position: absolute; top: -20px; right: 20px; font-size: 120px; opacity: 0.1; font-family: 'Cormorant Garamond', serif; }
+        .prayer-title { font-family: 'Cormorant Garamond', serif; font-size: 1.4em; color: var(--primary-gold); margin-bottom: 15px; }
+        .prayer-text { font-style: italic; line-height: 1.8; }
+        footer { text-align: center; padding: 30px; color: var(--text-light); font-size: 0.9em; margin-top: 40px; }
+        .footer-divider { width: 50px; height: 2px; background: var(--primary-gold); margin: 0 auto 15px; }
+        .hidden { display: none; }
+        .fade-in { animation: fadeIn 0.5s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @media (max-width: 768px) { h1 { font-size: 2em; } .content-card { padding: 25px; } .tabs { gap: 10px; } .tab { padding: 12px 20px; font-size: 0.85em; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Renungan PSM</h1>
+            <div class="subtitle">Pagi Siang Malam</div>
+            <div class="date-display" id="currentDate"></div>
+        </header>
+
+        <div class="tabs">
+            <button class="tab active" onclick="switchTab('pagi')" id="tab-pagi"><span class="tab-icon">🌅</span>Pagi</button>
+            <button class="tab" onclick="switchTab('siang')" id="tab-siang"><span class="tab-icon">☀️</span>Siang</button>
+            <button class="tab" onclick="switchTab('malam')" id="tab-malam"><span class="tab-icon">🌙</span>Malam</button>
+        </div>
+
+        <div id="contentArea">
+            <div class="content-card fade-in" id="pagi-content">
+                <div class="session-header">
+                    <div class="session-icon">🌅</div>
+                    <div class="session-title-group"><h2>Renungan Pagi</h2><div class="theme-badge" id="pagi-theme"></div></div>
+                </div>
+                <div class="scripture-box">
+                    <span class="scripture-ref" id="pagi-ref"></span>
+                    <div class="scripture-note">Bacalah ayat ini di Alkitab Anda</div>
+                </div>
+                <div class="devotion-content" id="pagi-devotion"></div>
+                <div class="reflection-question"><h4>💭 Renungkan:</h4><p id="pagi-question"></p></div>
+                <div class="prayer-section"><div class="prayer-title">Doa Pagi</div><div class="prayer-text" id="pagi-prayer"></div></div>
+            </div>
+
+            <div class="content-card hidden" id="siang-content">
+                <div class="session-header">
+                    <div class="session-icon">☀️</div>
+                    <div class="session-title-group"><h2>Renungan Siang</h2><div class="theme-badge" id="siang-theme"></div></div>
+                </div>
+                <div class="scripture-box">
+                    <span class="scripture-ref" id="siang-ref"></span>
+                    <div class="scripture-note">Bacalah ayat ini di Alkitab Anda</div>
+                </div>
+                <div class="devotion-content" id="siang-devotion"></div>
+                <div class="reflection-question"><h4>💭 Renungkan:</h4><p id="siang-question"></p></div>
+                <div class="prayer-section"><div class="prayer-title">Doa Siang</div><div class="prayer-text" id="siang-prayer"></div></div>
+            </div>
+
+            <div class="content-card hidden" id="malam-content">
+                <div class="session-header">
+                    <div class="session-icon">🌙</div>
+                    <div class="session-title-group"><h2>Renungan Malam</h2><div class="theme-badge" id="malam-theme"></div></div>
+                </div>
+                <div class="scripture-box">
+                    <span class="scripture-ref" id="malam-ref"></span>
+                    <div class="scripture-note">Bacalah ayat ini di Alkitab Anda</div>
+                </div>
+                <div class="devotion-content" id="malam-devotion"></div>
+                <div class="reflection-question"><h4>💭 Renungkan:</h4><p id="malam-question"></p></div>
+                <div class="prayer-section"><div class="prayer-title">Doa Malam</div><div class="prayer-text" id="malam-prayer"></div></div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-divider"></div>
+            <p>&copy; 2026 by Ps. Yanto Goutama</p>
+            <p style="margin-top: 5px; font-size: 0.85em;">Renungan PSM - Pagi Siang Malam</p>
+        </footer>
+    </div>
+
+    <script>
+        // Database komponen untuk generate 365 tema unik
+        const subjects = ["Kasih", "Kasih Karunia", "Kemurahan", "Kebaikan", "Kesetiaan", "Kebenaran", "Keadilan", "Kedamaian", "Sukacita", "Pengharapan", "Iman", "Kekuatan", "Kemenangan", "Kemuliaan", "Kekudusan", "Kebijaksanaan", "Pengertian", "Pengetahuan", "Kerendahan Hati", "Kesabaran", "Ketahanan", "Kegigihan", "Ketulusan", "Kejujuran", "Keberanian", "Keteguhan", "Kekuatan Batin", "Kedalaman", "Ketinggian", "Keluwesan", "Kecukupan", "Kekayaan", "Kemakmuran", "Kesehatan", "Kesembuhan", "Pemulihan", "Pengampunan", "Penebusan", "Pembenaran", "Pengudusan", "Pemeliharaan", "Perlindungan", "Pertolongan", "Penyertaan", "Pimpinan", "Bimbingan", "Terang", "Kejernihan", "Kepastian", "Keamanan", "Ketenangan", "Kelembutan", "Kemurahan Hati", "Belas Kasihan", "Empati", "Pengertian", "Penerimaan", "Pengangkatan", "Penghiburan", "Penyegaran", "Kebahagiaan", "Kepuasan", "Kecukupan", "Kelimpahan", "Berlimpah-limpah", "Berkat", "Anugerah", "Pemberian", "Karunia", "Talent", "Kemampuan", "Potensi", "Mujizat", "Tanda", "Kuasa", "Keagungan", "Kebesaran", "Kemuliaan", "Kehormatan", "Kewibawaan", "Kedaulatan", "Kerajaan", "Pemerintahan", "Ketetapan", "Rencana", "Tujuan", "Maksud", "Panggilan", "Pilihan", "Kesanggupan", "Kesediaan", "Ketaatan", "Pengabdian", "Pelayanan", "Persembahan", "Korban", "Pengorbanan", "Cinta", "Sayang", "Kasih Sayang", "Persahabatan", "Persekutuan", "Persatuan", "Kesatuan", "Kesepakatan", "Kedamaian", "Perdamaian", "Rekonsiliasi", "Pemulihan Hubungan", "Pertobatan", "Pergantian", "Pembaruan", "Pembaharuan", "Pertumbuhan", "Kematangan", "Kesempurnaan", "Keutuhan", "Keselamatan", "Keselamatan Jiwa", "Kekekalan", "Keabadian", "Surga", "Kerajaan Surga", "Kehidupan", "Kehidupan Kekal", "Kehidupan Baru", "Kehidupan yang Berkelimpahan", "Kehidupan yang Berbuah", "Kehidupan yang Bermakna", "Kehidupan yang Bertujuan", "Kehidupan yang Diberkati", "Kehidupan yang Dikuduskan", "Kehidupan yang Dipenuhi Roh", "Kehidupan yang Disenangi Tuhan", "Kehidupan yang Berkenan", "Kehidupan yang Saleh", "Kehidupan yang Benar", "Kehidupan yang Adil", "Kehidupan yang Damai", "Kehidupan yang Sukacita", "Kehidupan yang Pengharapan", "Kehidupan yang Iman", "Kehidupan yang Cinta", "Kehidupan yang Kasih", "Kehidupan yang Melayani", "Kehidupan yang Mengasihi", "Kehidupan yang Mengampuni", "Kehidupan yang Menerima", "Kehidupan yang Memberi", "Kehidupan yang Berbagi", "Kehidupan yang Peduli", "Kehidupan yang Memperhatikan", "Kehidupan yang Mengasihi Sesama", "Kehidupan yang Mengasihi Tuhan", "Kehidupan yang Mengasihi Keluarga", "Kehidupan yang Mengasihi Saudara", "Kehidupan yang Mengasihi Musuh", "Kehidupan yang Mengasihi Orang Lain", "Kehidupan yang Mengasihi Diri Sendiri", "Kehidupan yang Seimbang", "Kehidupan yang Harmonis", "Kehidupan yang Teratur", "Kehidupan yang Disiplin", "Kehidupan yang Rajin", "Kehidupan yang Tekun", "Kehidupan yang Gigih", "Kehidupan yang Ulet", "Kehidupan yang Tabah", "Kehidupan yang Kuat", "Kehidupan yang Tangguh", "Kehidupan yang Teguh", "Kehidupan yang Kokoh", "Kehidupan yang Mantap", "Kehidupan yang Stabil", "Kehidupan yang Aman", "Kehidupan yang Tentram", "Kehidupan yang Tenteram", "Kehidupan yang Nyaman", "Kehidupan yang Senang", "Kehidupan yang Bahagia", "Kehidupan yang Gembira", "Kehidupan yang Bersukacita", "Kehidupan yang Bersorak-sorai", "Kehidupan yang Bersyukur", "Kehidupan yang Berterima Kasih", "Kehidupan yang Mengucap Syukur", "Kehidupan yang Memuliakan Tuhan", "Kehidupan yang Memuji Tuhan", "Kehidupan yang Menyembah Tuhan", "Kehidupan yang Berdoa", "Kehidupan yang Bersekutu", "Kehidupan yang Beribadah", "Kehidupan yang Berpuasa", "Kehidupan yang Berbagi Firman", "Kehidupan yang Memberitakan Injil", "Kehidupan yang Menjadi Saksi", "Kehidupan yang Menjadi Berkat", "Kehidupan yang Menjadi Terang", "Kehidupan yang Menjadi Garam", "Kehidupan yang Menjadi Teladan", "Kehidupan yang Menjadi Contoh", "Kehidupan yang Menjadi Panutan", "Kehidupan yang Menjadi Inspirasi", "Kehidupan yang Menjadi Motivasi", "Kehidupan yang Menjadi Dorongan", "Kehidupan yang Menjadi Kekuatan", "Kehidupan yang Menjadi Pengharapan", "Kehidupan yang Menjadi Penghiburan", "Kehidupan yang Menjadi Penyegaran", "Kehidupan yang Menjadi Pemulihan", "Kehidupan yang Menjadi Kesembuhan", "Kehidupan yang Menjadi Kesehatan", "Kehidupan yang Menjadi Kekayaan", "Kehidupan yang Menjadi Kemakmuran", "Kehidupan yang Menjadi Kecukupan", "Kehidupan yang Menjadi Kelimpahan", "Kehidupan yang Menjadi Berlimpah-limpah", "Kehidupan yang Menjadi Berkah", "Kehidupan yang Menjadi Anugerah", "Kehidupan yang Menjadi Karunia", "Kehidupan yang Menjadi Pemberian", "Kehidupan yang Menjadi Hadiah", "Kehidupan yang Menjadi Bonus", "Kehidupan yang Menjadi Kejutan", "Kehidupan yang Menjadi Mujizat", "Kehidupan yang Menjadi Tanda", "Kehidupan yang Menjadi Kuasa", "Kehidupan yang Menjadi Keagungan", "Kehidupan yang Menjadi Kebesaran", "Kehidupan yang Menjadi Kemuliaan", "Kehidupan yang Menjadi Kehormatan", "Kehidupan yang Menjadi Kewibawaan", "Kehidupan yang Menjadi Kedaulatan", "Kehidupan yang Menjadi Kerajaan", "Kehidupan yang Menjadi Pemerintahan", "Kehidupan yang Menjadi Ketetapan", "Kehidupan yang Menjadi Rencana", "Kehidupan yang Menjadi Tujuan", "Kehidupan yang Menjadi Maksud", "Kehidupan yang Menjadi Panggilan", "Kehidupan yang Menjadi Pilihan", "Kehidupan yang Menjadi Kesanggupan", "Kehidupan yang Menjadi Kesediaan", "Kehidupan yang Menjadi Ketaatan", "Kehidupan yang Menjadi Pengabdian", "Kehidupan yang Menjadi Pelayanan", "Kehidupan yang Menjadi Persembahan", "Kehidupan yang Menjadi Korban", "Kehidupan yang Menjadi Pengorbanan"];
+
+        const contexts = ["di Dalam Kristus", "oleh Roh Kudus", "karena Kasih Karunia", "melalui Iman", "dalam Pengharapan", "dengan Sukacita", "dalam Damai Sejahtera", "dalam Kebenaran", "dalam Keadilan", "dalam Kemuliaan", "dalam Kekudusan", "dalam Kebijaksanaan", "dalam Pengertian", "dalam Pengetahuan", "dalam Kerendahan Hati", "dalam Kesabaran", "dalam Ketahanan", "dalam Kegigihan", "dalam Ketulusan", "dalam Kejujuran", "dalam Keberanian", "dalam Keteguhan", "dalam Kekuatan Batin", "dalam Kedalaman", "dalam Ketinggian", "dalam Keluwesan", "dalam Kecukupan", "dalam Kekayaan", "dalam Kemakmuran", "dalam Kesehatan", "dalam Kesembuhan", "dalam Pemulihan", "dalam Pengampunan", "dalam Penebusan", "dalam Pembenaran", "dalam Pengudusan", "dalam Pemeliharaan", "dalam Perlindungan", "dalam Pertolongan", "dalam Penyertaan", "dalam Pimpinan", "dalam Bimbingan", "dalam Terang", "dalam Kejernihan", "dalam Kepastian", "dalam Keamanan", "dalam Ketenangan", "dalam Kelembutan", "dalam Kemurahan Hati", "dalam Belas Kasihan", "dalam Empati", "dalam Pengertian", "dalam Penerimaan", "dalam Pengangkatan", "dalam Penghiburan", "dalam Penyegaran", "dalam Kebahagiaan", "dalam Kepuasan", "dalam Kelimpahan", "dalam Berlimpah-limpah", "dalam Berkat", "dalam Anugerah", "dalam Pemberian", "dalam Karunia", "dalam Talent", "dalam Kemampuan", "dalam Potensi", "dalam Mujizat", "dalam Tanda", "dalam Kuasa", "dalam Keagungan", "dalam Kebesaran", "dalam Kehormatan", "dalam Kewibawaan", "dalam Kedaulatan", "dalam Kerajaan", "dalam Pemerintahan", "dalam Ketetapan", "dalam Rencana", "dalam Tujuan", "dalam Maksud", "dalam Panggilan", "dalam Pilihan", "dalam Kesanggupan", "dalam Kesediaan", "dalam Ketaatan", "dalam Pengabdian", "dalam Pelayanan", "dalam Persembahan", "dalam Korban", "dalam Pengorbanan", "dalam Cinta", "dalam Sayang", "dalam Kasih Sayang", "dalam Persahabatan", "dalam Persekutuan", "dalam Persatuan", "dalam Kesatuan", "dalam Kesepakatan", "dalam Kedamaian", "dalam Perdamaian", "dalam Rekonsiliasi", "dalam Pemulihan Hubungan", "dalam Pertobatan", "dalam Pergantian", "dalam Pembaruan", "dalam Pembaharuan", "dalam Pertumbuhan", "dalam Kematangan", "dalam Kesempurnaan", "dalam Keutuhan", "dalam Keselamatan", "dalam Keselamatan Jiwa", "dalam Kekekalan", "dalam Keabadian", "dalam Surga", "dalam Kerajaan Surga", "dalam Kehidupan", "dalam Kehidupan Kekal", "dalam Kehidupan Baru", "dalam Kehidupan yang Berkelimpahan", "dalam Kehidupan yang Berbuah", "dalam Kehidupan yang Bermakna", "dalam Kehidupan yang Bertujuan", "dalam Kehidupan yang Diberkati", "dalam Kehidupan yang Dikuduskan", "dalam Kehidupan yang Dipenuhi Roh", "dalam Kehidupan yang Disenangi Tuhan", "dalam Kehidupan yang Berkenan", "dalam Kehidupan yang Saleh", "dalam Kehidupan yang Benar", "dalam Kehidupan yang Adil", "dalam Kehidupan yang Damai", "dalam Kehidupan yang Sukacita", "dalam Kehidupan yang Pengharapan", "dalam Kehidupan yang Iman", "dalam Kehidupan yang Cinta", "dalam Kehidupan yang Kasih", "dalam Kehidupan yang Melayani", "dalam Kehidupan yang Mengasihi", "dalam Kehidupan yang Mengampuni", "dalam Kehidupan yang Menerima", "dalam Kehidupan yang Memberi", "dalam Kehidupan yang Berbagi", "dalam Kehidupan yang Peduli", "dalam Kehidupan yang Memperhatikan", "dalam Kehidupan yang Mengasihi Sesama", "dalam Kehidupan yang Mengasihi Tuhan", "dalam Kehidupan yang Mengasihi Keluarga", "dalam Kehidupan yang Mengasihi Saudara", "dalam Kehidupan yang Mengasihi Musuh", "dalam Kehidupan yang Mengasihi Orang Lain", "dalam Kehidupan yang Mengasihi Diri Sendiri", "dalam Kehidupan yang Seimbang", "dalam Kehidupan yang Harmonis", "dalam Kehidupan yang Teratur", "dalam Kehidupan yang Disiplin", "dalam Kehidupan yang Rajin", "dalam Kehidupan yang Tekun", "dalam Kehidupan yang Gigih", "dalam Kehidupan yang Ulet", "dalam Kehidupan yang Tabah", "dalam Kehidupan yang Kuat", "dalam Kehidupan yang Tangguh", "dalam Kehidupan yang Teguh", "dalam Kehidupan yang Kokoh", "dalam Kehidupan yang Mantap", "dalam Kehidupan yang Stabil", "dalam Kehidupan yang Aman", "dalam Kehidupan yang Tentram", "dalam Kehidupan yang Tenteram", "dalam Kehidupan yang Nyaman", "dalam Kehidupan yang Senang", "dalam Kehidupan yang Bahagia", "dalam Kehidupan yang Gembira", "dalam Kehidupan yang Bersukacita", "dalam Kehidupan yang Bersorak-sorai", "dalam Kehidupan yang Bersyukur", "dalam Kehidupan yang Berterima Kasih", "dalam Kehidupan yang Mengucap Syukur", "dalam Kehidupan yang Memuliakan Tuhan", "dalam Kehidupan yang Memuji Tuhan", "dalam Kehidupan yang Menyembah Tuhan", "dalam Kehidupan yang Berdoa", "dalam Kehidupan yang Bersekutu", "dalam Kehidupan yang Beribadah", "dalam Kehidupan yang Berpuasa", "dalam Kehidupan yang Berbagi Firman", "dalam Kehidupan yang Memberitakan Injil", "dalam Kehidupan yang Menjadi Saksi", "dalam Kehidupan yang Menjadi Berkat", "dalam Kehidupan yang Menjadi Terang", "dalam Kehidupan yang Menjadi Garam", "dalam Kehidupan yang Menjadi Teladan", "dalam Kehidupan yang Menjadi Contoh", "dalam Kehidupan yang Menjadi Panutan", "dalam Kehidupan yang Menjadi Inspirasi", "dalam Kehidupan yang Menjadi Motivasi", "dalam Kehidupan yang Menjadi Dorongan", "dalam Kehidupan yang Menjadi Kekuatan", "dalam Kehidupan yang Menjadi Pengharapan", "dalam Kehidupan yang Menjadi Penghiburan", "dalam Kehidupan yang Menjadi Penyegaran", "dalam Kehidupan yang Menjadi Pemulihan", "dalam Kehidupan yang Menjadi Kesembuhan", "dalam Kehidupan yang Menjadi Kesehatan", "dalam Kehidupan yang Menjadi Kekayaan", "dalam Kehidupan yang Menjadi Kemakmuran", "dalam Kehidupan yang Menjadi Kecukupan", "dalam Kehidupan yang Menjadi Kelimpahan", "dalam Kehidupan yang Menjadi Berlimpah-limpah", "dalam Kehidupan yang Menjadi Berkah", "dalam Kehidupan yang Menjadi Anugerah", "dalam Kehidupan yang Menjadi Karunia", "dalam Kehidupan yang Menjadi Pemberian", "dalam Kehidupan yang Menjadi Hadiah", "dalam Kehidupan yang Menjadi Bonus", "dalam Kehidupan yang Menjadi Kejutan", "dalam Kehidupan yang Menjadi Mujizat", "dalam Kehidupan yang Menjadi Tanda", "dalam Kehidupan yang Menjadi Kuasa", "dalam Kehidupan yang Menjadi Keagungan", "dalam Kehidupan yang Menjadi Kebesaran", "dalam Kehidupan yang Menjadi Kemuliaan", "dalam Kehidupan yang Menjadi Kehormatan", "dalam Kehidupan yang Menjadi Kewibawaan", "dalam Kehidupan yang Menjadi Kedaulatan", "dalam Kehidupan yang Menjadi Kerajaan", "dalam Kehidupan yang Menjadi Pemerintahan", "dalam Kehidupan yang Menjadi Ketetapan", "dalam Kehidupan yang Menjadi Rencana", "dalam Kehidupan yang Menjadi Tujuan", "dalam Kehidupan yang Menjadi Maksud", "dalam Kehidupan yang Menjadi Panggilan", "dalam Kehidupan yang Menjadi Pilihan", "dalam Kehidupan yang Menjadi Kesanggupan", "dalam Kehidupan yang Menjadi Kesediaan", "dalam Kehidupan yang Menjadi Ketaatan", "dalam Kehidupan yang Menjadi Pengabdian", "dalam Kehidupan yang Menjadi Pelayanan", "dalam Kehidupan yang Menjadi Persembahan", "dalam Kehidupan yang Menjadi Korban", "dalam Kehidupan yang Menjadi Pengorbanan"];
+
+        const books = ["Mazmur", "Amsal", "Yesaya", "Yeremia", "Ratapan", "Yehezkiel", "Daniel", "Hosea", "Yoel", "Amos", "Mikha", "Nahum", "Habakuk", "Zefanya", "Hagai", "Zakharia", "Maleakhi", "Matius", "Markus", "Lukas", "Yohanes", "Kisah Para Rasul", "Roma", "1 Korintus", "2 Korintus", "Galatia", "Efesus", "Filipi", "Kolose", "1 Tesalonika", "2 Tesalonika", "1 Timotius", "2 Timotius", "Titus", "Filemon", "Ibrani", "Yakobus", "1 Petrus", "2 Petrus", "1 Yohanes", "2 Yohanes", "3 Yohanes", "Yudas", "Wahyu", "Kejadian", "Keluaran", "Imamat", "Bilangan", "Ulangan", "Yosua", "Hakim-hakim", "Rut", "1 Samuel", "2 Samuel", "1 Raja-raja", "2 Raja-raja", "1 Tawarikh", "2 Tawarikh", "Ezra", "Nehemia", "Ester", "Ayub"];
+
+        // Generate tema unik berdasarkan hari
+        function getDailyTheme(dayOfYear) {
+            const subjectIndex = dayOfYear % subjects.length;
+            const contextIndex = Math.floor(dayOfYear / subjects.length) % contexts.length;
+            return subjects[subjectIndex] + " " + contexts[contextIndex];
+        }
+
+        // Generate renungan dinamis
+        function getDevotion(session, theme, dayOfYear) {
+            const timeContext = session === 'pagi' ? 'pagi hari' : session === 'siang' ? 'tengah hari' : 'malam hari';
+            const activity = session === 'pagi' ? 'memulai aktivitas' : session === 'siang' ? 'meneruskan pekerjaan' : 'beristirahat';
+            
+            return {
+                intro: `Renungan ${timeContext} ini mengajak kita merenungkan tentang ${theme}. Saat kita ${activity}, firman Tuhan memberikan kita kekuatan dan arahan.`,
+                body: `Dalam kehidupan sehari-hari, seringkali kita menghadapi berbagai tantangan dan pergumulan. Namun, melalui ${theme}, kita diberikan jalan keluar dan pengharapan baru. Biarlah kebenaran ini menemani langkah kita hari ini.`,
+                reflection: `Bagaimana ${theme} dapat menjadi nyata dalam hidup Anda saat ini?`,
+                prayer: `Bapa di sorga, terima kasih untuk ${theme} yang Engkau berikan kepada kami. Ajar kami untuk menghidupinya dalam setiap langkah kami. Dalam nama Yesus, kami berdoa. Amin.`
+            };
+        }
+
+        // Generate referensi ayat
+        function getDailyReference(session, dayOfYear) {
+            const offset = session === 'pagi' ? 0 : session === 'siang' ? 20 : 40;
+            const bookIndex = (dayOfYear + offset) % books.length;
+            const chapter = ((dayOfYear * 3 + offset) % 10) + 1;
+            const verse = ((dayOfYear * 7 + offset) % 20) + 1;
+            return `${books[bookIndex]} ${chapter}:${verse}`;
+        }
+
+        // Hitung hari ke-berapa dalam tahun
+        function getDayOfYear() {
+            const now = new Date();
+            const start = new Date(now.getFullYear(), 0, 0);
+            const diff = now - start;
+            return Math.floor(diff / (1000 * 60 * 60 * 24));
+        }
+
+        // Load konten
+        function loadContent() {
+            const dayOfYear = getDayOfYear();
+            const theme = getDailyTheme(dayOfYear);
+            
+            document.getElementById('currentDate').textContent = new Date().toLocaleDateString('id-ID', { 
+                weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' 
+            });
+
+            ['pagi', 'siang', 'malam'].forEach(session => {
+                const ref = getDailyReference(session, dayOfYear);
+                const devotion = getDevotion(session, theme, dayOfYear);
+                
+                document.getElementById(`${session}-theme`).textContent = theme;
+                document.getElementById(`${session}-ref`).textContent = ref;
+                document.getElementById(`${session}-devotion`).innerHTML = `<p>${devotion.intro}</p><p>${devotion.body}</p>`;
+                document.getElementById(`${session}-question`).textContent = devotion.reflection;
+                document.getElementById(`${session}-prayer`).textContent = devotion.prayer;
+            });
+
+            setActiveTabByTime();
+        }
+
+        // Switch tab
+        function switchTab(session) {
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            document.getElementById(`tab-${session}`).classList.add('active');
+            document.querySelectorAll('.content-card').forEach(card => {
+                card.classList.add('hidden');
+                card.classList.remove('fade-in');
+            });
+            const activeCard = document.getElementById(`${session}-content`);
+            activeCard.classList.remove('hidden');
+            activeCard.classList.add('fade-in');
+        }
+
+        // Auto-detect waktu
+        function setActiveTabByTime() {
+            const hour = new Date().getHours();
+            let session = 'pagi';
+            if (hour >= 12 && hour < 18) session = 'siang';
+            else if (hour >= 18 || hour < 6) session = 'malam';
+            switchTab(session);
+        }
+
+        document.addEventListener('DOMContentLoaded', loadContent);
+    </script>
+</body>
+</html>
