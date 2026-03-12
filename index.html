@@ -10,7 +10,7 @@
         :root { --primary-gold: #D4AF37; --dark-gold: #B8860B; --light-gold: #F4E8C1; --deep-navy: #1a1a2e; --soft-white: #fafafa; --text-dark: #2c2c2c; --text-light: #666; }
         body { font-family: 'Montserrat', sans-serif; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); min-height: 100vh; color: var(--text-dark); line-height: 1.6; }
         .container { max-width: 900px; margin: 0 auto; padding: 20px; }
-        header { text-align: center; padding: 40px 20px; background: linear-gradient(135deg, var(--deep-navy) 0%, #16213e 100%); color: white; border-radius: 20px; margin-bottom: 30px; position: relative; overflow: hidden; }
+        header { text-align: center; padding: 40px 20px; background: linear-gradient(135deg, var(--deep-navy) 0%, #16213e 100%); color: white; border-radius: 20px; margin-bottom: 30px; }
         h1 { font-family: 'Cormorant Garamond', serif; font-size: 2.5em; font-weight: 600; margin-bottom: 10px; letter-spacing: 2px; color: var(--primary-gold); }
         .subtitle { font-size: 0.9em; opacity: 0.9; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px; }
         .date-display { font-size: 1.1em; font-weight: 300; background: rgba(255,255,255,0.1); padding: 10px 25px; border-radius: 30px; display: inline-block; border: 1px solid rgba(212,175,55,0.3); }
@@ -18,14 +18,14 @@
         .tab { background: white; border: none; padding: 15px 30px; border-radius: 50px; cursor: pointer; font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 0.95em; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
         .tab.active { background: var(--deep-navy); color: var(--primary-gold); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(26,26,46,0.3); }
         .tab-icon { margin-right: 8px; font-size: 1.2em; }
-        .content-card { background: white; border-radius: 20px; padding: 40px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); margin-bottom: 20px; position: relative; overflow: hidden; min-height: 500px; }
+        .content-card { background: white; border-radius: 20px; padding: 40px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); margin-bottom: 20px; position: relative; overflow: hidden; min-height: 400px; }
         .content-card::before { content: ''; position: absolute; top: 0; left: 0; width: 5px; height: 100%; background: linear-gradient(to bottom, var(--primary-gold), var(--dark-gold)); }
         .session-header { display: flex; align-items: center; margin-bottom: 25px; padding-bottom: 20px; border-bottom: 2px solid var(--light-gold); }
         .session-icon { font-size: 2.5em; margin-right: 20px; background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
         .session-title-group h2 { font-family: 'Cormorant Garamond', serif; font-size: 1.8em; color: var(--deep-navy); margin-bottom: 5px; }
         .scripture-box { background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%); padding: 25px; border-radius: 15px; margin-bottom: 25px; border-left: 4px solid var(--primary-gold); }
-        .scripture-ref { font-family: 'Cormorant Garamond', serif; font-size: 1.3em; font-weight: 600; color: var(--dark-gold); margin-bottom: 10px; display: block; }
-        .scripture-text { font-style: italic; color: var(--text-dark); line-height: 1.8; font-size: 1.05em; }
+        .scripture-ref { font-family: 'Cormorant Garamond', serif; font-size: 1.5em; font-weight: 600; color: var(--dark-gold); display: block; text-align: center; }
+        .scripture-note { font-size: 0.9em; color: var(--text-light); margin-top: 10px; text-align: center; font-style: italic; }
         .devotion-content { color: var(--text-dark); line-height: 1.9; font-size: 1.05em; text-align: justify; }
         .devotion-content p { margin-bottom: 15px; }
         .reflection-question { background: var(--soft-white); padding: 20px; border-radius: 12px; margin-top: 25px; border: 1px solid #e0e0e0; }
@@ -33,7 +33,6 @@
         .prayer-section::before { content: '"'; position: absolute; top: -20px; right: 20px; font-size: 120px; opacity: 0.1; font-family: 'Cormorant Garamond', serif; }
         .prayer-title { font-family: 'Cormorant Garamond', serif; font-size: 1.4em; color: var(--primary-gold); margin-bottom: 15px; }
         .prayer-text { font-style: italic; line-height: 1.8; }
-        .error-box { background: #fee; color: #c33; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #c33; }
         footer { text-align: center; padding: 30px; color: var(--text-light); font-size: 0.9em; margin-top: 40px; }
         .footer-divider { width: 50px; height: 2px; background: var(--primary-gold); margin: 0 auto 15px; }
         .hidden { display: none; }
@@ -47,7 +46,7 @@
         <header>
             <h1>Renungan PSM</h1>
             <div class="subtitle">Pagi Siang Malam</div>
-            <div class="date-display" id="currentDate">Memuat...</div>
+            <div class="date-display" id="currentDate"></div>
         </header>
 
         <div class="tabs">
@@ -63,8 +62,8 @@
                     <div class="session-title-group"><h2>Renungan Pagi</h2><div class="session-time">Memulai Hari dengan Tuhan</div></div>
                 </div>
                 <div class="scripture-box">
-                    <span class="scripture-ref" id="pagi-ref">Memuat...</span>
-                    <div class="scripture-text" id="pagi-verse">Sedang memuat ayat...</div>
+                    <span class="scripture-ref" id="pagi-ref"></span>
+                    <div class="scripture-note">Bacalah ayat ini di Alkitab Anda</div>
                 </div>
                 <div class="devotion-content" id="pagi-devotion"></div>
                 <div class="reflection-question"><h4>💭 Renungkan:</h4><p id="pagi-question"></p></div>
@@ -77,8 +76,8 @@
                     <div class="session-title-group"><h2>Renungan Siang</h2><div class="session-time">Berdoa di Tengah Hari</div></div>
                 </div>
                 <div class="scripture-box">
-                    <span class="scripture-ref" id="siang-ref">Memuat...</span>
-                    <div class="scripture-text" id="siang-verse">Sedang memuat ayat...</div>
+                    <span class="scripture-ref" id="siang-ref"></span>
+                    <div class="scripture-note">Bacalah ayat ini di Alkitab Anda</div>
                 </div>
                 <div class="devotion-content" id="siang-devotion"></div>
                 <div class="reflection-question"><h4>💭 Renungkan:</h4><p id="siang-question"></p></div>
@@ -91,8 +90,8 @@
                     <div class="session-title-group"><h2>Renungan Malam</h2><div class="session-time">Refleksi dan Examen</div></div>
                 </div>
                 <div class="scripture-box">
-                    <span class="scripture-ref" id="malam-ref">Memuat...</span>
-                    <div class="scripture-text" id="malam-verse">Sedang memuat ayat...</div>
+                    <span class="scripture-ref" id="malam-ref"></span>
+                    <div class="scripture-note">Bacalah ayat ini di Alkitab Anda</div>
                 </div>
                 <div class="devotion-content" id="malam-devotion"></div>
                 <div class="reflection-question"><h4>💭 Renungkan:</h4><p id="malam-question"></p></div>
@@ -108,145 +107,43 @@
     </div>
 
     <script>
-        // Database ayat dengan jumlah pasal yang valid
-        const bibleBooks = {
-            'genesis': { name: 'Kejadian', chapters: 50 },
-            'exodus': { name: 'Keluaran', chapters: 40 },
-            'leviticus': { name: 'Imamat', chapters: 27 },
-            'numbers': { name: 'Bilangan', chapters: 36 },
-            'deuteronomy': { name: 'Ulangan', chapters: 34 },
-            'joshua': { name: 'Yosua', chapters: 24 },
-            'judges': { name: 'Hakim-hakim', chapters: 21 },
-            'ruth': { name: 'Rut', chapters: 4 },
-            '1samuel': { name: '1 Samuel', chapters: 31 },
-            '2samuel': { name: '2 Samuel', chapters: 24 },
-            '1kings': { name: '1 Raja-raja', chapters: 22 },
-            '2kings': { name: '2 Raja-raja', chapters: 25 },
-            '1chronicles': { name: '1 Tawarikh', chapters: 29 },
-            '2chronicles': { name: '2 Tawarikh', chapters: 36 },
-            'ezra': { name: 'Ezra', chapters: 10 },
-            'nehemiah': { name: 'Nehemia', chapters: 13 },
-            'esther': { name: 'Ester', chapters: 10 },
-            'job': { name: 'Ayub', chapters: 42 },
-            'psalms': { name: 'Mazmur', chapters: 150 },
-            'proverbs': { name: 'Amsal', chapters: 31 },
-            'ecclesiastes': { name: 'Pengkhotbah', chapters: 12 },
-            'songofsolomon': { name: 'Kidung Agung', chapters: 8 },
-            'isaiah': { name: 'Yesaya', chapters: 66 },
-            'jeremiah': { name: 'Yeremia', chapters: 52 },
-            'lamentations': { name: 'Ratapan', chapters: 5 },
-            'ezekiel': { name: 'Yehezkiel', chapters: 48 },
-            'daniel': { name: 'Daniel', chapters: 12 },
-            'hosea': { name: 'Hosea', chapters: 14 },
-            'joel': { name: 'Yoel', chapters: 3 },
-            'amos': { name: 'Amos', chapters: 9 },
-            'obadiah': { name: 'Obaja', chapters: 1 },
-            'jonah': { name: 'Yunus', chapters: 4 },
-            'micah': { name: 'Mikha', chapters: 7 },
-            'nahum': { name: 'Nahum', chapters: 3 },
-            'habakkuk': { name: 'Habakuk', chapters: 3 },
-            'zephaniah': { name: 'Zefanya', chapters: 3 },
-            'haggai': { name: 'Hagai', chapters: 2 },
-            'zechariah': { name: 'Zakharia', chapters: 14 },
-            'malachi': { name: 'Maleakhi', chapters: 4 },
-            'matthew': { name: 'Matius', chapters: 28 },
-            'mark': { name: 'Markus', chapters: 16 },
-            'luke': { name: 'Lukas', chapters: 24 },
-            'john': { name: 'Yohanes', chapters: 21 },
-            'acts': { name: 'Kisah Para Rasul', chapters: 28 },
-            'romans': { name: 'Roma', chapters: 16 },
-            '1corinthians': { name: '1 Korintus', chapters: 16 },
-            '2corinthians': { name: '2 Korintus', chapters: 13 },
-            'galatians': { name: 'Galatia', chapters: 6 },
-            'ephesians': { name: 'Efesus', chapters: 6 },
-            'philippians': { name: 'Filipi', chapters: 4 },
-            'colossians': { name: 'Kolose', chapters: 4 },
-            '1thessalonians': { name: '1 Tesalonika', chapters: 5 },
-            '2thessalonians': { name: '2 Tesalonika', chapters: 3 },
-            '1timothy': { name: '1 Timotius', chapters: 6 },
-            '2timothy': { name: '2 Timotius', chapters: 4 },
-            'titus': { name: 'Titus', chapters: 3 },
-            'philemon': { name: 'Filemon', chapters: 1 },
-            'hebrews': { name: 'Ibrani', chapters: 13 },
-            'james': { name: 'Yakobus', chapters: 5 },
-            '1peter': { name: '1 Petrus', chapters: 5 },
-            '2peter': { name: '2 Petrus', chapters: 3 },
-            '1john': { name: '1 Yohanes', chapters: 5 },
-            '2john': { name: '2 Yohanes', chapters: 1 },
-            '3john': { name: '3 Yohanes', chapters: 1 },
-            'jude': { name: 'Yudas', chapters: 1 },
-            'revelation': { name: 'Wahyu', chapters: 22 }
-        };
+        // Daftar kitab Alkitab dengan jumlah pasal
+        const bibleBooks = [
+            { name: "Kejadian", chapters: 50 }, { name: "Keluaran", chapters: 40 }, { name: "Imamat", chapters: 27 },
+            { name: "Bilangan", chapters: 36 }, { name: "Ulangan", chapters: 34 }, { name: "Yosua", chapters: 24 },
+            { name: "Hakim-hakim", chapters: 21 }, { name: "Rut", chapters: 4 }, { name: "1 Samuel", chapters: 31 },
+            { name: "2 Samuel", chapters: 24 }, { name: "1 Raja-raja", chapters: 22 }, { name: "2 Raja-raja", chapters: 25 },
+            { name: "1 Tawarikh", chapters: 29 }, { name: "2 Tawarikh", chapters: 36 }, { name: "Ezra", chapters: 10 },
+            { name: "Nehemia", chapters: 13 }, { name: "Ester", chapters: 10 }, { name: "Ayub", chapters: 42 },
+            { name: "Mazmur", chapters: 150 }, { name: "Amsal", chapters: 31 }, { name: "Pengkhotbah", chapters: 12 },
+            { name: "Kidung Agung", chapters: 8 }, { name: "Yesaya", chapters: 66 }, { name: "Yeremia", chapters: 52 },
+            { name: "Ratapan", chapters: 5 }, { name: "Yehezkiel", chapters: 48 }, { name: "Daniel", chapters: 12 },
+            { name: "Hosea", chapters: 14 }, { name: "Yoel", chapters: 3 }, { name: "Amos", chapters: 9 },
+            { name: "Obaja", chapters: 1 }, { name: "Yunus", chapters: 4 }, { name: "Mikha", chapters: 7 },
+            { name: "Nahum", chapters: 3 }, { name: "Habakuk", chapters: 3 }, { name: "Zefanya", chapters: 3 },
+            { name: "Hagai", chapters: 2 }, { name: "Zakharia", chapters: 14 }, { name: "Maleakhi", chapters: 4 },
+            { name: "Matius", chapters: 28 }, { name: "Markus", chapters: 16 }, { name: "Lukas", chapters: 24 },
+            { name: "Yohanes", chapters: 21 }, { name: "Kisah Para Rasul", chapters: 28 }, { name: "Roma", chapters: 16 },
+            { name: "1 Korintus", chapters: 16 }, { name: "2 Korintus", chapters: 13 }, { name: "Galatia", chapters: 6 },
+            { name: "Efesus", chapters: 6 }, { name: "Filipi", chapters: 4 }, { name: "Kolose", chapters: 4 },
+            { name: "1 Tesalonika", chapters: 5 }, { name: "2 Tesalonika", chapters: 3 }, { name: "1 Timotius", chapters: 6 },
+            { name: "2 Timotius", chapters: 4 }, { name: "Titus", chapters: 3 }, { name: "Filemon", chapters: 1 },
+            { name: "Ibrani", chapters: 13 }, { name: "Yakobus", chapters: 5 }, { name: "1 Petrus", chapters: 5 },
+            { name: "2 Petrus", chapters: 3 }, { name: "1 Yohanes", chapters: 5 }, { name: "2 Yohanes", chapters: 1 },
+            { name: "3 Yohanes", chapters: 1 }, { name: "Yudas", chapters: 1 }, { name: "Wahyu", chapters: 22 }
+        ];
 
-        // Ayat default jika API gagal
-        const defaultVerses = {
-            pagi: { book: 'psalms', chapter: 5, verse: 3, text: 'TUHAN, pada waktu pagi Engkau mendengar seruanku; pada waktu pagi aku mengatur persembahan bagi-Mu, dan aku menunggu-nunggu.' },
-            siang: { book: 'psalms', chapter: 55, verse: 17, text: 'Sore dan pagi dan tengah hari aku mengeluh dan mengaduh, dan didengar-Nya suaraku.' },
-            malam: { book: 'psalms', chapter: 4, verse: 8, text: 'Dalam damai sejahtera aku akan membaringkan diri dan segera tidur, sebab Engkau sendiri, ya TUHAN, yang membiarkan aku diam dengan tenteram.' }
-        };
-
-        // Generate ayat valid berdasarkan tanggal
-        function getDailyVerse(session, dayOfYear) {
-            const bookKeys = Object.keys(bibleBooks);
-            const sessionOffset = session === 'pagi' ? 0 : session === 'siang' ? 22 : 44;
-            const bookIndex = (dayOfYear + sessionOffset) % bookKeys.length;
-            const bookKey = bookKeys[bookIndex];
-            const book = bibleBooks[bookKey];
+        // Generate referensi ayat berdasarkan tanggal (365 hari unik)
+        function getDailyReference(session, dayOfYear) {
+            const offset = session === 'pagi' ? 0 : session === 'siang' ? 122 : 244;
+            const index = (dayOfYear + offset) % bibleBooks.length;
+            const book = bibleBooks[index];
             
             // Generate chapter dan verse yang valid
-            const chapter = ((dayOfYear * 7) % book.chapters) + 1;
-            const maxVerses = 30; // Asumsi rata-rata 30 ayat per pasal
-            const verse = ((dayOfYear * 13) % maxVerses) + 1;
+            const chapter = ((dayOfYear * 3 + offset) % book.chapters) + 1;
+            const verse = ((dayOfYear * 7 + offset) % 30) + 1;
             
-            return {
-                book: bookKey,
-                chapter: chapter,
-                verse: verse,
-                ref: `${book.name} ${chapter}:${verse}`
-            };
-        }
-
-        // Ambil ayat dari API dengan fallback
-        async function fetchVerse(book, chapter, verse, session) {
-            try {
-                // Coba API dari alkitab-api (SABDA-based)
-                const response = await fetch(`https://alkitab-api.vercel.app/api/passage?passage=${book}&num=${chapter}`);
-                
-                if (!response.ok) throw new Error('API Error');
-                
-                const data = await response.json();
-                
-                // Parse HTML response untuk ekstrak ayat
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(data.data || data, 'text/html');
-                const verses = doc.querySelectorAll('.verse');
-                
-                // Cari ayat yang sesuai
-                for (let v of verses) {
-                    const verseNum = v.querySelector('.verse-num');
-                    if (verseNum && verseNum.textContent.includes(verse)) {
-                        const content = v.querySelector('.verse-content');
-                        if (content) return content.textContent.trim();
-                    }
-                }
-                
-                // Jika tidak ketemu, ambil ayat pertama yang ada
-                if (verses.length > 0) {
-                    const firstContent = verses[0].querySelector('.verse-content');
-                    if (firstContent) return firstContent.textContent.trim();
-                }
-                
-                throw new Error('Verse not found in response');
-                
-            } catch (error) {
-                console.error('API Error:', error);
-                // Fallback ke ayat default
-                const defaultVerse = defaultVerses[session];
-                if (defaultVerse.book === book && defaultVerse.chapter === chapter && defaultVerse.verse === verse) {
-                    return defaultVerse.text;
-                }
-                return `Ayat ${verse} dari ${book} ${chapter}. (Silakan cek koneksi internet atau referensi Alkitab Anda)`;
-            }
+            return `${book.name} ${chapter}:${verse}`;
         }
 
         // Konten renungan
@@ -280,7 +177,7 @@
         }
 
         // Load konten
-        async function loadContent() {
+        function loadContent() {
             const dayOfYear = getDayOfYear();
             const sessions = ['pagi', 'siang', 'malam'];
             
@@ -289,13 +186,10 @@
             });
 
             for (const session of sessions) {
-                const verseData = getDailyVerse(session, dayOfYear);
-                const verseText = await fetchVerse(verseData.book, verseData.chapter, verseData.verse, session);
-                
+                const ref = getDailyReference(session, dayOfYear);
                 const d = devotions[session];
                 
-                document.getElementById(`${session}-ref`).textContent = verseData.ref;
-                document.getElementById(`${session}-verse`).textContent = `"${verseText}"`;
+                document.getElementById(`${session}-ref`).textContent = ref;
                 document.getElementById(`${session}-devotion`).innerHTML = `<p>${d.intro}</p><p>${d.body}</p>`;
                 document.getElementById(`${session}-question`).textContent = d.reflection;
                 document.getElementById(`${session}-prayer`).textContent = d.prayer;
