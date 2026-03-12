@@ -194,53 +194,45 @@
             const diff = now - start;
             return Math.floor(diff / (1000 * 60 * 60 * 24));
         }
-
+    
+        // Generate data untuk satu sesi (pagi/siang/malam)
         function getSessionData(session, dayOfYear) {
-    // Tambahkan tahun untuk variasi tahunan
+    // TAMBAHAN: Variasi tahunan agar renungan beda tiap tahun
     const year = new Date().getFullYear();
-    const yearOffset = (year - 2026) * 100; // 2026 = offset 0, 2027 = +100, dst
+    const yearOffset = (year - 2026) * 100;
+    const uniqueDay = dayOfYear + yearOffset;
     
     // Offset berbeda untuk setiap sesi agar ayat berbeda
     const offset = session === 'pagi' ? 0 : session === 'siang' ? 1 : 2;
+    const bookIndex = (uniqueDay + offset) % bibleBooks.length;  // DIUBAH: pakai uniqueDay
+    const book = bibleBooks[bookIndex];
     
-    // Gabungkan dayOfYear dengan yearOffset agar unik tiap tahun
-    const uniqueDay = dayOfYear + yearOffset;
-    const bookIndex = uniqueDay % bibleBooks.length;
-        
-        // Generate data untuk satu sesi (pagi/siang/malam)
-        function getSessionData(session, dayOfYear) {
-            // Offset berbeda untuk setiap sesi agar ayat berbeda
-            const offset = session === 'pagi' ? 0 : session === 'siang' ? 1 : 2;
-            const bookIndex = (dayOfYear + offset) % bibleBooks.length;
-            const book = bibleBooks[bookIndex];
-            
-            // Generate chapter yang valid
-            const chapter = ((dayOfYear * 3 + offset * 7) % book.chapters) + 1;
-            
-            // Generate verse (1-30)
-            const verse = ((dayOfYear * 7 + offset * 13) % 30) + 1;
-            
-            // Tema berdasarkan kitab dan hari
-            const dailyTheme = `${book.theme} - Hari ke-${dayOfYear}`;
-            
-            // Renungan yang terhubung dengan tema kitab
-            const timeContext = session === 'pagi' ? 'Pagi' : session === 'siang' ? 'Siang' : 'Malam';
-            const activity = session === 'pagi' ? 'memulai hari' : session === 'siang' ? 'meneruskan pekerjaan' : 'mengakhiri hari';
-            
-            const devotion = {
-                intro: `${timeContext} ini kita akan merenungkan ${book.theme} dari kitab ${book.name}. Saat kita ${activity}, firman Tuhan mengingatkan kita tentang kebenaran ini.`,
-                body: `Dalam ${book.name} ${chapter}:${verse}, kita melihat bagaimana ${book.theme.toLowerCase()} diwujudkan dalam kehidupan orang percaya. Biarlah ayat ini menjadi pengingat bagi kita untuk selalu mengandalkan Tuhan dalam setiap situasi.`,
-                reflection: `Bagaimana ${book.theme.toLowerCase()} dapat Anda terapkan dalam hidup Anda ${session === 'pagi' ? 'hari ini' : session === 'siang' ? 'di tengah kesibukan' : 'sebelum tidur'}?`,
-                prayer: `Bapa di sorga, terima kasih untuk firman-Mu dari ${book.name} yang mengajarkan kami tentang ${book.theme.toLowerCase()}. Ajar kami untuk menghidupinya dalam setiap langkah kami. Dalam nama Yesus, kami berdoa. Amin.`
-            };
-            
-            return {
-                ref: `${book.name} ${chapter}:${verse}`,
-                theme: dailyTheme,
-                devotion: devotion
-            };
-        }
-
+    // Generate chapter yang valid
+    const chapter = ((dayOfYear * 3 + offset * 7) % book.chapters) + 1;
+    
+    // Generate verse (1-30)
+    const verse = ((dayOfYear * 7 + offset * 13) % 30) + 1;
+    
+    // Tema berdasarkan kitab dan hari
+    const dailyTheme = `${book.theme} - Hari ke-${dayOfYear}`;
+    
+    // Renungan yang terhubung dengan tema kitab
+    const timeContext = session === 'pagi' ? 'Pagi' : session === 'siang' ? 'Siang' : 'Malam';
+    const activity = session === 'pagi' ? 'memulai hari' : session === 'siang' ? 'meneruskan pekerjaan' : 'mengakhiri hari';
+    
+    const devotion = {
+        intro: `${timeContext} ini kita akan merenungkan ${book.theme} dari kitab ${book.name}. Saat kita ${activity}, firman Tuhan mengingatkan kita tentang kebenaran ini.`,
+        body: `Dalam ${book.name} ${chapter}:${verse}, kita melihat bagaimana ${book.theme.toLowerCase()} diwujudkan dalam kehidupan orang percaya. Biarlah ayat ini menjadi pengingat bagi kita untuk selalu mengandalkan Tuhan dalam setiap situasi.`,
+        reflection: `Bagaimana ${book.theme.toLowerCase()} dapat Anda terapkan dalam hidup Anda ${session === 'pagi' ? 'hari ini' : session === 'siang' ? 'di tengah kesibukan' : 'sebelum tidur'}?`,
+        prayer: `Bapa di sorga, terima kasih untuk firman-Mu dari ${book.name} yang mengajarkan kami tentang ${book.theme.toLowerCase()}. Ajar kami untuk menghidupinya dalam setiap langkah kami. Dalam nama Yesus, kami berdoa. Amin.`
+    };
+    
+    return {
+        ref: `${book.name} ${chapter}:${verse}`,
+        theme: dailyTheme,
+        devotion: devotion
+    };
+}
         // Load konten
         function loadContent() {
             const dayOfYear = getDayOfYear();
